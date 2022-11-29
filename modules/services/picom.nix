@@ -100,7 +100,10 @@ in {
       example = [ "window_type *= 'menu'" "name ~= 'Firefox$'" "focused = 1" ];
       description = ''
         List of conditions of windows that should not be faded.
-        See <literal>picom(1)</literal> man page for more examples.
+        See <citerefentry>
+          <refentrytitle>picom</refentrytitle>
+          <manvolnum>1</manvolnum>
+        </citerefentry> for more examples.
       '';
     };
 
@@ -136,7 +139,10 @@ in {
       example = [ "window_type *= 'menu'" "name ~= 'Firefox$'" "focused = 1" ];
       description = ''
         List of conditions of windows that should have no shadow.
-        See <literal>picom(1)</literal> man page for more examples.
+        See <citerefentry>
+          <refentrytitle>picom</refentrytitle>
+          <manvolnum>1</manvolnum>
+        </citerefentry> man page for more examples.
       '';
     };
 
@@ -193,7 +199,7 @@ in {
         "0:_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"
       ];
       description = ''
-        Rules that control the opacity of windows, in format PERCENT:PATTERN.
+        Rules that control the opacity of windows, in format <literal>PERCENT:PATTERN</literal>.
       '';
     };
 
@@ -264,7 +270,10 @@ in {
         description = ''
           Picom settings. Use this option to configure Picom settings not exposed
           in a NixOS option or to bypass one. For the available options see the
-          CONFIGURATION FILES section at <literal>picom(1)</literal>.
+          <literal>CONFIGURATION FILES</literal> section at <citerefentry>
+            <refentrytitle>picom</refentrytitle>
+            <manvolnum>1</manvolnum>
+          </citerefentry>.
         '';
       };
   };

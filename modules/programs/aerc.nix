@@ -6,8 +6,10 @@ let
   primitive = with types;
     ((type: either type (listOf type)) (nullOr (oneOf [ str int bool float ])))
     // {
-      description =
-        "values (null, bool, int, string of float) or a list of values, that will be joined with a comma";
+      description = ''
+        values (<literal>null</literal>, <literal>bool</literal>,
+                <literal>int</literal>, </literal>string</literal> of <literal>float</literal>)
+                or a list of values, that will be joined with a comma'';
     };
   confSection = types.attrsOf primitive;
   confSections = types.attrsOf confSection;
@@ -32,7 +34,10 @@ in {
         ''{ Work = { source = "maildir://~/Maildir/work"; }; }'';
       description = ''
         Extra lines added to <filename>$HOME/.config/aerc/accounts.conf</filename>.
-        See aerc-config(5).
+        See <citerefentry>
+          <refentrytitle>aerc-config</refentrytitle>
+          <manvolnum>5</manvolnum>
+        </citerefentry>.
       '';
     };
 
@@ -42,8 +47,11 @@ in {
       example = literalExpression ''{ messages = { q = ":quit<Enter>"; }; }'';
       description = ''
         Extra lines added to <filename>$HOME/.config/aerc/binds.conf</filename>.
-        Global keybindings can be set in the `global` section.
-        See aerc-config(5).
+        Global keybindings can be set in the <literal>global</literal> section.
+        See <citerefentry>
+          <refentrytitle>aerc-config</refentrytitle>
+          <manvolnum>5</manvolnum>
+        </citerefentry>.
       '';
     };
 
@@ -53,7 +61,10 @@ in {
       example = literalExpression ''{ ui = { sort = "-r date"; }; }'';
       description = ''
         Extra lines added to <filename>$HOME/.config/aerc/aerc.conf</filename>.
-        See aerc-config(5).
+        See <citerefentry>
+          <refentrytitle>aerc-config</refentrytitle>
+          <manvolnum>5</manvolnum>
+        </citerefentry>.
       '';
     };
 
@@ -65,7 +76,10 @@ in {
       '';
       description = ''
         Stylesets added to <filename>$HOME/.config/aerc/stylesets/</filename>.
-        See aerc-stylesets(7).
+        See <citerefentry>
+          <refentrytitle>aerc-stylesets</refentrytitle>
+          <manvolnum>7</manvolnum>
+        </citerefentry>.
       '';
     };
     templates = mkOption {
@@ -76,7 +90,10 @@ in {
       '';
       description = ''
         Templates added to <filename>$HOME/.config/aerc/templates/</filename>.
-        See aerc-templates(7).
+        See <citerefentry>
+          <refentrytitle>aerc-templates</refentrytitle>
+          <manvolnum>7</manvolnum>
+        </citerefentry>.
       '';
     };
   };
@@ -128,9 +145,13 @@ in {
     warnings = if ((cfg.extraAccounts != "" && cfg.extraAccounts != { })
       || accountsExtraAccounts != { })
     && (cfg.extraConfig.general.unsafe-accounts-conf or false) == false then [''
-      aerc: An email account was configured, but `extraConfig.general.unsafe-accounts-conf` is set to false or unset.
-      This will prevent aerc from starting, see `unsafe-accounts-conf` in aerc-config(5) for details.
-      Consider setting the option `extraConfig.general.unsafe-accounts-conf` to true.
+      aerc: An email account was configured, but <xref linkend="opt-extraConfig.general.unsafe-accounts-conf/>
+      is set to false or unset.
+      This will prevent aerc from starting, see <literal>unsafe-accounts-conf</literal> in <citerefentry>
+          <refentrytitle>aerc-config</refentrytitle>
+          <manvolnum>5</manvolnum>
+        </citerefentry> for details.
+      Consider setting the option <xref linkend="opt-extraConfig.general.unsafe-accounts-conf"/> to true.
     ''] else
       [ ];
     home.packages = [ pkgs.aerc ];

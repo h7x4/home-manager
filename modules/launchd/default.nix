@@ -27,7 +27,8 @@ let
         '';
         description = ''
           Define a launchd job. See <citerefentry>
-          <refentrytitle>launchd.plist</refentrytitle><manvolnum>5</manvolnum>
+            <refentrytitle>launchd.plist</refentrytitle>
+            <manvolnum>5</manvolnum>
           </citerefentry> for details.
         '';
       };
@@ -66,14 +67,14 @@ in {
       defaultText = literalExpression "pkgs.stdenv.hostPlatform.isDarwin";
       description = ''
         Whether to enable Home Manager to define per-user daemons by making use
-        of launchd's LaunchAgents.
+        of launchd's <literal>LaunchAgents</literal>.
       '';
     };
 
     agents = mkOption {
       type = with types; attrsOf (submodule launchdConfig);
       default = { };
-      description = "Define LaunchAgents.";
+      description = "Define <literal>LaunchAgents</literal>.";
     };
   };
 
